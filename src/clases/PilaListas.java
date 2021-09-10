@@ -16,7 +16,7 @@ public class PilaListas {
     }
 
     public void push(Object dato) {
-        System.out.println(dato);
+        //System.out.println(dato);
         pila.add(dato);
     }
 
@@ -38,7 +38,6 @@ public class PilaListas {
 
     public boolean isEmpty() {
         return pila.size() == 0;
-
     }
     
     public int size(){

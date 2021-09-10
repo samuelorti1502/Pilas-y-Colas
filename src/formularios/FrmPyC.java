@@ -1,6 +1,6 @@
 package formularios;
 
-import clases.PilaListas;
+import clases.*;
 import java.awt.Image;
 import javax.swing.DefaultListModel;
 import javax.swing.Icon;
@@ -20,7 +20,9 @@ public class FrmPyC extends javax.swing.JFrame {
     private ImageIcon Img;
     private Icon icono;
     PilaListas pila = new PilaListas();
+    PilaArreglo pilaA = new PilaArreglo();
     DefaultListModel model = new DefaultListModel();
+    private int tipo;
 
     public FrmPyC() {
         initComponents();
@@ -43,10 +45,6 @@ public class FrmPyC extends javax.swing.JFrame {
         panelPrincipal.add(umg, 0);
     }
 
-    public void pilaArreglos() {
-
-    }
-
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -57,9 +55,9 @@ public class FrmPyC extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         txtLista = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        btnMostrar = new javax.swing.JButton();
+        btnExtraer = new javax.swing.JButton();
+        btnAgregar = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jList1 = new javax.swing.JList<>();
         jPanel2 = new javax.swing.JPanel();
@@ -87,30 +85,32 @@ public class FrmPyC extends javax.swing.JFrame {
 
         jLabel2.setText("Listas");
 
-        jButton1.setText("Mostrar");
-        jButton1.setToolTipText("peek");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnMostrar.setText("Mostrar");
+        btnMostrar.setToolTipText("peek");
+        btnMostrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnMostrarActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Extraer");
-        jButton2.setToolTipText("pop");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnExtraer.setText("Extraer");
+        btnExtraer.setToolTipText("pop");
+        btnExtraer.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnExtraerActionPerformed(evt);
             }
         });
 
-        jButton3.setText("Agregar");
-        jButton3.setToolTipText("push");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        btnAgregar.setText("Agregar");
+        btnAgregar.setToolTipText("push");
+        btnAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                btnAgregarActionPerformed(evt);
             }
         });
 
+        jList1.setEnabled(false);
+        jList1.setFocusable(false);
         jScrollPane2.setViewportView(jList1);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -123,11 +123,11 @@ public class FrmPyC extends javax.swing.JFrame {
                     .addComponent(txtLista, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(2, 2, 2)
-                        .addComponent(jButton3)
+                        .addComponent(btnAgregar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton1)
+                        .addComponent(btnMostrar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton2))
+                        .addComponent(btnExtraer))
                     .addComponent(txtArreglo, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1)
                     .addComponent(jLabel2))
@@ -150,9 +150,9 @@ public class FrmPyC extends javax.swing.JFrame {
                         .addComponent(txtLista, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton2)
-                            .addComponent(jButton1)
-                            .addComponent(jButton3)))
+                            .addComponent(btnExtraer)
+                            .addComponent(btnMostrar)
+                            .addComponent(btnAgregar)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -180,9 +180,8 @@ public class FrmPyC extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 488, Short.MAX_VALUE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 488, Short.MAX_VALUE)
-                        .addComponent(panelPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 488, Short.MAX_VALUE)))
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 488, Short.MAX_VALUE)
+                    .addComponent(panelPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 488, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -200,42 +199,62 @@ public class FrmPyC extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
         boolean arreglo = vacio(txtArreglo);
         boolean lista = vacio(txtLista);
+        String texto = txtLista.getText();
+        String txtA = txtArreglo.getText();
 
         if (!arreglo && lista) {
-            JOptionPane.showMessageDialog(null, "Lista arreglo");
+            JOptionPane.showMessageDialog(null, "Pila arreglo");
+            model.addElement(txtA);
+            jList1.setModel(model);
+            txtArreglo.setText("");
+            pilaA.push(txtA);
+            txtArreglo.requestFocus();
+            setTipo(1);
         } else if (arreglo && !lista) {
-            String texto = txtLista.getText();
-            
             model.addElement(texto);
             jList1.setModel(model);
             //jList1.addElement(txtLista.getText() + "\n");
             txtLista.setText("");
             pila.push(texto);
+            txtLista.requestFocus();
+            setTipo(2);
         } else {
             JOptionPane.showMessageDialog(null, "Ingrese dato para agregar");
         }
 
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_btnAgregarActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        JOptionPane.showMessageDialog(null, pila.peek());
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void btnMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarActionPerformed
+        if (getTipo() == 1) {
+            JOptionPane.showMessageDialog(null, pilaA.peek1());
+        } else if (getTipo() == 2) {
+            JOptionPane.showMessageDialog(null, pila.peek());
+        }
+    }//GEN-LAST:event_btnMostrarActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btnExtraerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExtraerActionPerformed
         boolean arreglo = vacio(txtArreglo);
         boolean lista = vacio(txtLista);
-        
+
         String texto = txtLista.getText();
 
-        JOptionPane.showMessageDialog(null, pila.peek());
-        pila.pop();
-        int size = pila.size();
-        model.remove(size);
-        jList1.setModel(model);
-    }//GEN-LAST:event_jButton2ActionPerformed
+        if (getTipo() == 1) {
+            JOptionPane.showMessageDialog(null, pilaA.peek1());
+            pilaA.pop();
+            int size = pilaA.size();
+            model.remove(size);
+            jList1.setModel(model);
+        } else if (getTipo() == 2) {
+            JOptionPane.showMessageDialog(null, pila.peek());
+            pila.pop();
+            int size = pila.size();
+            model.remove(size);
+            jList1.setModel(model);
+        }
+    }//GEN-LAST:event_btnExtraerActionPerformed
 
     public boolean vacio(JTextField texto) {
         boolean v;
@@ -244,8 +263,15 @@ public class FrmPyC extends javax.swing.JFrame {
         } else {
             v = false;
         }
-
         return v;
+    }
+
+    public int getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(int tipo) {
+        this.tipo = tipo;
     }
 
     /**
@@ -284,9 +310,9 @@ public class FrmPyC extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton btnAgregar;
+    private javax.swing.JButton btnExtraer;
+    private javax.swing.JButton btnMostrar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JList<String> jList1;
