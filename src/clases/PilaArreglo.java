@@ -8,7 +8,7 @@ import javax.swing.JOptionPane;
  * @author Samuel David Ortiz
  */
 public class PilaArreglo {
-
+    
     Stack<Object> pila = new Stack<>();
 
     public PilaArreglo() {

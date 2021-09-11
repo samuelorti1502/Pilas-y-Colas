@@ -21,6 +21,9 @@ public class FrmPyC extends javax.swing.JFrame {
     private Icon icono;
     PilaListas pila = new PilaListas();
     PilaArreglo pilaA = new PilaArreglo();
+    PilaArreglo2 pilaA2;
+    ColaLista cola = new ColaLista();
+    ColaArreglo colaA = new ColaArreglo(4);
     DefaultListModel model = new DefaultListModel();
     private int tipo;
 
@@ -50,7 +53,7 @@ public class FrmPyC extends javax.swing.JFrame {
     private void initComponents() {
 
         panelPrincipal = new javax.swing.JPanel();
-        jPanel1 = new javax.swing.JPanel();
+        panelPila = new javax.swing.JPanel();
         txtArreglo = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -60,7 +63,16 @@ public class FrmPyC extends javax.swing.JFrame {
         btnAgregar = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jList1 = new javax.swing.JList<>();
-        jPanel2 = new javax.swing.JPanel();
+        panelCola = new javax.swing.JPanel();
+        txtCArreglo = new javax.swing.JTextField();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        txtCLista = new javax.swing.JTextField();
+        btnCMostrar = new javax.swing.JButton();
+        btnCExtraer = new javax.swing.JButton();
+        btnCAgregar = new javax.swing.JButton();
+        jScrollPane7 = new javax.swing.JScrollPane();
+        jList6 = new javax.swing.JList<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -71,15 +83,15 @@ public class FrmPyC extends javax.swing.JFrame {
         panelPrincipal.setLayout(panelPrincipalLayout);
         panelPrincipalLayout.setHorizontalGroup(
             panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 484, Short.MAX_VALUE)
         );
         panelPrincipalLayout.setVerticalGroup(
             panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 96, Short.MAX_VALUE)
         );
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanel1.setPreferredSize(new java.awt.Dimension(0, 260));
+        panelPila.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        panelPila.setPreferredSize(new java.awt.Dimension(0, 260));
 
         jLabel1.setText("Arreglos");
 
@@ -113,15 +125,15 @@ public class FrmPyC extends javax.swing.JFrame {
         jList1.setFocusable(false);
         jScrollPane2.setViewportView(jList1);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout panelPilaLayout = new javax.swing.GroupLayout(panelPila);
+        panelPila.setLayout(panelPilaLayout);
+        panelPilaLayout.setHorizontalGroup(
+            panelPilaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelPilaLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panelPilaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtLista, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGroup(panelPilaLayout.createSequentialGroup()
                         .addGap(2, 2, 2)
                         .addComponent(btnAgregar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -135,11 +147,11 @@ public class FrmPyC extends javax.swing.JFrame {
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 121, Short.MAX_VALUE)
                 .addContainerGap())
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+        panelPilaLayout.setVerticalGroup(
+            panelPilaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelPilaLayout.createSequentialGroup()
+                .addGroup(panelPilaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelPilaLayout.createSequentialGroup()
                         .addGap(31, 31, 31)
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -149,27 +161,95 @@ public class FrmPyC extends javax.swing.JFrame {
                         .addGap(16, 16, 16)
                         .addComponent(txtLista, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(panelPilaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnExtraer)
                             .addComponent(btnMostrar)
                             .addComponent(btnAgregar)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGroup(panelPilaLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(14, Short.MAX_VALUE))
         );
 
-        jPanel2.setPreferredSize(new java.awt.Dimension(0, 260));
+        panelCola.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        panelCola.setPreferredSize(new java.awt.Dimension(0, 260));
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 488, Short.MAX_VALUE)
+        jLabel11.setText("Arreglos");
+
+        jLabel12.setText("Listas");
+
+        btnCMostrar.setText("Mostrar");
+        btnCMostrar.setToolTipText("peek");
+        btnCMostrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCMostrarActionPerformed(evt);
+            }
+        });
+
+        btnCExtraer.setText("Extraer");
+        btnCExtraer.setToolTipText("pop");
+        btnCExtraer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCExtraerActionPerformed(evt);
+            }
+        });
+
+        btnCAgregar.setText("Agregar");
+        btnCAgregar.setToolTipText("push");
+        btnCAgregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCAgregarActionPerformed(evt);
+            }
+        });
+
+        jList6.setEnabled(false);
+        jList6.setFocusable(false);
+        jScrollPane7.setViewportView(jList6);
+
+        javax.swing.GroupLayout panelColaLayout = new javax.swing.GroupLayout(panelCola);
+        panelCola.setLayout(panelColaLayout);
+        panelColaLayout.setHorizontalGroup(
+            panelColaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelColaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelColaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtCLista, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(panelColaLayout.createSequentialGroup()
+                        .addGap(2, 2, 2)
+                        .addComponent(btnCAgregar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnCMostrar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnCExtraer))
+                    .addComponent(txtCArreglo, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel11)
+                    .addComponent(jLabel12))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 121, Short.MAX_VALUE)
+                .addContainerGap())
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 260, Short.MAX_VALUE)
+        panelColaLayout.setVerticalGroup(
+            panelColaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelColaLayout.createSequentialGroup()
+                .addGroup(panelColaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelColaLayout.createSequentialGroup()
+                        .addGap(31, 31, 31)
+                        .addComponent(jLabel11)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtCArreglo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel12)
+                        .addGap(16, 16, 16)
+                        .addComponent(txtCLista, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addGroup(panelColaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnCExtraer)
+                            .addComponent(btnCMostrar)
+                            .addComponent(btnCAgregar)))
+                    .addGroup(panelColaLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -179,9 +259,9 @@ public class FrmPyC extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 488, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 488, Short.MAX_VALUE)
-                    .addComponent(panelPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 488, Short.MAX_VALUE))
+                    .addComponent(panelPila, javax.swing.GroupLayout.DEFAULT_SIZE, 488, Short.MAX_VALUE)
+                    .addComponent(panelPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 488, Short.MAX_VALUE)
+                    .addComponent(panelCola, javax.swing.GroupLayout.DEFAULT_SIZE, 488, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -190,9 +270,10 @@ public class FrmPyC extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(panelPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(panelPila, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(panelCola, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(44, Short.MAX_VALUE))
         );
 
         setSize(new java.awt.Dimension(518, 709));
@@ -206,11 +287,14 @@ public class FrmPyC extends javax.swing.JFrame {
         String txtA = txtArreglo.getText();
 
         if (!arreglo && lista) {
-            JOptionPane.showMessageDialog(null, "Pila arreglo");
+            //JOptionPane.showMessageDialog(null, "Pila arreglo");
             model.addElement(txtA);
             jList1.setModel(model);
             txtArreglo.setText("");
             pilaA.push(txtA);
+            //pilaA2 = new PilaArreglo2(10);
+            //pilaA2.push(txtA);           
+
             txtArreglo.requestFocus();
             setTipo(1);
         } else if (arreglo && !lista) {
@@ -230,6 +314,7 @@ public class FrmPyC extends javax.swing.JFrame {
     private void btnMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarActionPerformed
         if (getTipo() == 1) {
             JOptionPane.showMessageDialog(null, pilaA.peek1());
+            //JOptionPane.showMessageDialog(null, pilaA2.peek());
         } else if (getTipo() == 2) {
             JOptionPane.showMessageDialog(null, pila.peek());
         }
@@ -255,6 +340,62 @@ public class FrmPyC extends javax.swing.JFrame {
             jList1.setModel(model);
         }
     }//GEN-LAST:event_btnExtraerActionPerformed
+
+    private void btnCMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCMostrarActionPerformed
+        if (getTipo() == 1) {
+            JOptionPane.showMessageDialog(null, colaA.peek());
+        } else if (getTipo() == 2) {
+            JOptionPane.showMessageDialog(null, cola.peek());
+        }
+    }//GEN-LAST:event_btnCMostrarActionPerformed
+
+    private void btnCExtraerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCExtraerActionPerformed
+        //boolean arreglo = vacio(txtCArreglo);
+        //boolean lista = vacio(txtCLista);
+
+        if (getTipo() == 1) {
+            JOptionPane.showMessageDialog(null, colaA.peek());
+            colaA.pop();
+            int size = colaA.size() - colaA.size();
+            model.remove(size);
+            jList6.setModel(model);
+        } else if (getTipo() == 2) {
+            JOptionPane.showMessageDialog(null, cola.peek());
+            cola.pop();
+            int size = cola.size() - cola.size();
+            model.remove(size);
+            jList6.setModel(model);
+        }
+    }//GEN-LAST:event_btnCExtraerActionPerformed
+
+    private void btnCAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCAgregarActionPerformed
+        boolean arreglo = vacio(txtCArreglo);
+        boolean lista = vacio(txtCLista);
+        String texto = txtCLista.getText();
+        String txtA = txtCArreglo.getText();
+
+        if (!arreglo && lista) {
+            if (colaA.isLimite()) {
+                model.addElement(txtA);
+                jList6.setModel(model);
+                txtCArreglo.setText("");
+                colaA.push(txtA);
+                txtCArreglo.requestFocus();
+                setTipo(1);
+            }else{
+                JOptionPane.showMessageDialog(null, "Excedio el limite de la cola");
+            }
+        } else if (arreglo && !lista) {
+            model.addElement(texto);
+            jList6.setModel(model);
+            txtCLista.setText("");
+            cola.push(texto);
+            txtCLista.requestFocus();
+            setTipo(2);
+        } else {
+            JOptionPane.showMessageDialog(null, "Ingrese dato para agregar");
+        }
+    }//GEN-LAST:event_btnCAgregarActionPerformed
 
     public boolean vacio(JTextField texto) {
         boolean v;
@@ -311,16 +452,65 @@ public class FrmPyC extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregar;
+    private javax.swing.JButton btnAgregar1;
+    private javax.swing.JButton btnAgregar2;
+    private javax.swing.JButton btnAgregar3;
+    private javax.swing.JButton btnAgregar4;
+    private javax.swing.JButton btnCAgregar;
+    private javax.swing.JButton btnCExtraer;
+    private javax.swing.JButton btnCMostrar;
     private javax.swing.JButton btnExtraer;
+    private javax.swing.JButton btnExtraer1;
+    private javax.swing.JButton btnExtraer2;
+    private javax.swing.JButton btnExtraer3;
+    private javax.swing.JButton btnExtraer4;
     private javax.swing.JButton btnMostrar;
+    private javax.swing.JButton btnMostrar1;
+    private javax.swing.JButton btnMostrar2;
+    private javax.swing.JButton btnMostrar3;
+    private javax.swing.JButton btnMostrar4;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JList<String> jList1;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
+    private javax.swing.JList<String> jList2;
+    private javax.swing.JList<String> jList3;
+    private javax.swing.JList<String> jList4;
+    private javax.swing.JList<String> jList5;
+    private javax.swing.JList<String> jList6;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane6;
+    private javax.swing.JScrollPane jScrollPane7;
+    private javax.swing.JPanel panelCola;
+    private javax.swing.JPanel panelPila;
+    private javax.swing.JPanel panelPila1;
+    private javax.swing.JPanel panelPila2;
+    private javax.swing.JPanel panelPila3;
+    private javax.swing.JPanel panelPila4;
     private javax.swing.JPanel panelPrincipal;
     private javax.swing.JTextField txtArreglo;
+    private javax.swing.JTextField txtArreglo1;
+    private javax.swing.JTextField txtArreglo2;
+    private javax.swing.JTextField txtArreglo3;
+    private javax.swing.JTextField txtArreglo4;
+    private javax.swing.JTextField txtCArreglo;
+    private javax.swing.JTextField txtCLista;
     private javax.swing.JTextField txtLista;
+    private javax.swing.JTextField txtLista1;
+    private javax.swing.JTextField txtLista2;
+    private javax.swing.JTextField txtLista3;
+    private javax.swing.JTextField txtLista4;
     // End of variables declaration//GEN-END:variables
 }
