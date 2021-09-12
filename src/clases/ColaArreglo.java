@@ -18,13 +18,14 @@ public class ColaArreglo {
     }
     
     public void push(String n) {
+        System.out.println(item);
         if (item < this.max) {
             System.out.println("Push... " + n);
             cola[item] = n;
             item++;
             setLimite(true);
         }else{
-            JOptionPane.showMessageDialog(null, "Excedio el limite de la cola");
+            //JOptionPane.showMessageDialog(null, "Excedio el limite de la cola");
             setLimite(false);
         }
     }
@@ -38,7 +39,7 @@ public class ColaArreglo {
             }
             item--;
         } else {
-            System.out.println("No pop, cola vacia");
+            System.out.println("La cola se encuentra vacia");
         }
     }
 
@@ -48,13 +49,13 @@ public class ColaArreglo {
         if (cola[0] != null) {
             p += cola[0];
         } else {
-            p = "No hay items";
+            p = "La cola se encuentra vacia";
         }
         return p;
     }
     
     public int size(){
-        return 4;
+        return this.max;
     }
 
     public boolean isLimite() {

@@ -1,43 +1,68 @@
 package clases;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Samuel David Ortiz
  */
 public class PilaArreglo2 {
-    private int item = 0, max;
-    Object pila[];
-    
+
+    Object cola[];
+    int item = 0, max;
+    private boolean limite = true;
+
     public PilaArreglo2(int max){
         this.max = max;
-        pila = new Object[max];
+        cola= new Object[max];
     }
     
-    public void push(String dato){
-        if(item < this.max){
-            pila[item] = dato;
+    public void push(String n) {
+        if (item < this.max) {
+            System.out.println("Push... " + n);
+            cola[item] = n;
             item++;
-            System.out.println("Dato " + dato + "Item " + item);
-        }
-    }
-    
-    public String peek(){
-        String ultimo = "";
-        if(item > 0){
-            ultimo = "Ultimo " + pila[item-1];
+            setLimite(true);
         }else{
-            ultimo = ("No hay elementos en la pila");
+            //JOptionPane.showMessageDialog(null, "Excedio el limite de la cola");
+            setLimite(false);
         }
-        return ultimo;
     }
-    
-    public void pop(){
-        if(item > 0){
-            for (int i = 0; i > pila.length; i++) {
-                pila[i-1] = pila[i];
+
+    public void pop() {
+        if (item > 0) {
+            System.out.println("Pop... " + cola[max-1]);
+            cola[max-1] = null;
+            for (int i = 1; i < item; i++) {
+                cola[i - 1] = cola[i];
             }
-            item++;
+            item--;
+        } else {
+            System.out.println("La cola se encuentra vacia");
         }
     }
+
+    public String peek() {
+        String p = "";
+
+        if (cola[max-1] != null) {
+            p += cola[max-1];
+        } else {
+            p = "La cola se encuentra vacia";
+        }
+        return p;
+    }
     
+    public int size(){
+        return this.max-1;
+    }
+
+    public boolean isLimite() {
+        return limite;
+    }
+
+    public void setLimite(boolean limite) {
+        this.limite = limite;
+    }
+
 }

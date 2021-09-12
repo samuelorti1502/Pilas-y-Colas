@@ -23,7 +23,7 @@ public class FrmPyC extends javax.swing.JFrame {
     PilaArreglo pilaA = new PilaArreglo();
     PilaArreglo2 pilaA2;
     ColaLista cola = new ColaLista();
-    ColaArreglo colaA = new ColaArreglo(4);
+    ColaArreglo colaA;
     DefaultListModel model = new DefaultListModel();
     private int tipo;
 
@@ -55,24 +55,24 @@ public class FrmPyC extends javax.swing.JFrame {
         panelPrincipal = new javax.swing.JPanel();
         panelPila = new javax.swing.JPanel();
         txtArreglo = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         txtLista = new javax.swing.JTextField();
         btnMostrar = new javax.swing.JButton();
         btnExtraer = new javax.swing.JButton();
         btnAgregar = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jList1 = new javax.swing.JList<>();
+        chkPL = new javax.swing.JCheckBox();
+        chkPArr = new javax.swing.JCheckBox();
         panelCola = new javax.swing.JPanel();
         txtCArreglo = new javax.swing.JTextField();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
         txtCLista = new javax.swing.JTextField();
         btnCMostrar = new javax.swing.JButton();
         btnCExtraer = new javax.swing.JButton();
         btnCAgregar = new javax.swing.JButton();
         jScrollPane7 = new javax.swing.JScrollPane();
         jList6 = new javax.swing.JList<>();
+        chkCArr = new javax.swing.JCheckBox();
+        chkCL = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -90,12 +90,8 @@ public class FrmPyC extends javax.swing.JFrame {
             .addGap(0, 96, Short.MAX_VALUE)
         );
 
-        panelPila.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        panelPila.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Pilas"));
         panelPila.setPreferredSize(new java.awt.Dimension(0, 260));
-
-        jLabel1.setText("Arreglos");
-
-        jLabel2.setText("Listas");
 
         btnMostrar.setText("Mostrar");
         btnMostrar.setToolTipText("peek");
@@ -125,6 +121,20 @@ public class FrmPyC extends javax.swing.JFrame {
         jList1.setFocusable(false);
         jScrollPane2.setViewportView(jList1);
 
+        chkPL.setText("Listas");
+        chkPL.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkPLActionPerformed(evt);
+            }
+        });
+
+        chkPArr.setText("Arreglos");
+        chkPArr.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkPArrActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout panelPilaLayout = new javax.swing.GroupLayout(panelPila);
         panelPila.setLayout(panelPilaLayout);
         panelPilaLayout.setHorizontalGroup(
@@ -141,42 +151,36 @@ public class FrmPyC extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnExtraer))
                     .addComponent(txtArreglo, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2))
+                    .addComponent(chkPArr)
+                    .addComponent(chkPL))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 121, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 113, Short.MAX_VALUE)
                 .addContainerGap())
         );
         panelPilaLayout.setVerticalGroup(
             panelPilaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelPilaLayout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(panelPilaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelPilaLayout.createSequentialGroup()
-                        .addGap(31, 31, 31)
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(chkPArr)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtArreglo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel2)
-                        .addGap(16, 16, 16)
+                        .addGap(25, 25, 25)
+                        .addComponent(chkPL)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtLista, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addGroup(panelPilaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnExtraer)
                             .addComponent(btnMostrar)
                             .addComponent(btnAgregar)))
-                    .addGroup(panelPilaLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(14, Short.MAX_VALUE))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(7, Short.MAX_VALUE))
         );
 
-        panelCola.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        panelCola.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Colas"));
         panelCola.setPreferredSize(new java.awt.Dimension(0, 260));
-
-        jLabel11.setText("Arreglos");
-
-        jLabel12.setText("Listas");
 
         btnCMostrar.setText("Mostrar");
         btnCMostrar.setToolTipText("peek");
@@ -206,6 +210,20 @@ public class FrmPyC extends javax.swing.JFrame {
         jList6.setFocusable(false);
         jScrollPane7.setViewportView(jList6);
 
+        chkCArr.setText("Arreglos");
+        chkCArr.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkCArrActionPerformed(evt);
+            }
+        });
+
+        chkCL.setText("Listas");
+        chkCL.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkCLActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout panelColaLayout = new javax.swing.GroupLayout(panelCola);
         panelCola.setLayout(panelColaLayout);
         panelColaLayout.setHorizontalGroup(
@@ -222,34 +240,34 @@ public class FrmPyC extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnCExtraer))
                     .addComponent(txtCArreglo, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel11)
-                    .addComponent(jLabel12))
+                    .addComponent(chkCArr)
+                    .addComponent(chkCL))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 121, Short.MAX_VALUE)
+                .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 113, Short.MAX_VALUE)
                 .addContainerGap())
         );
         panelColaLayout.setVerticalGroup(
             panelColaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelColaLayout.createSequentialGroup()
-                .addGroup(panelColaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panelColaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(panelColaLayout.createSequentialGroup()
-                        .addGap(31, 31, 31)
-                        .addComponent(jLabel11)
+                        .addContainerGap()
+                        .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelColaLayout.createSequentialGroup()
+                        .addGap(28, 28, 28)
+                        .addComponent(chkCArr)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(txtCArreglo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jLabel12)
-                        .addGap(16, 16, 16)
+                        .addComponent(chkCL)
+                        .addGap(10, 10, 10)
                         .addComponent(txtCLista, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addGroup(panelColaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnCExtraer)
                             .addComponent(btnCMostrar)
-                            .addComponent(btnCAgregar)))
-                    .addGroup(panelColaLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(14, Short.MAX_VALUE))
+                            .addComponent(btnCAgregar))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -287,13 +305,14 @@ public class FrmPyC extends javax.swing.JFrame {
         String txtA = txtArreglo.getText();
 
         if (!arreglo && lista) {
-            //JOptionPane.showMessageDialog(null, "Pila arreglo");
-            model.addElement(txtA);
-            jList1.setModel(model);
-            txtArreglo.setText("");
-            pilaA.push(txtA);
-            //pilaA2 = new PilaArreglo2(10);
-            //pilaA2.push(txtA);           
+            pilaA2.push(txtA);
+            if (!pilaA2.isLimite()) {
+                JOptionPane.showMessageDialog(null, "Excedio el limite de la pila");
+            } else {
+                model.addElement(txtA);
+                jList1.setModel(model);
+                txtArreglo.setText("");
+            }
 
             txtArreglo.requestFocus();
             setTipo(1);
@@ -313,8 +332,8 @@ public class FrmPyC extends javax.swing.JFrame {
 
     private void btnMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarActionPerformed
         if (getTipo() == 1) {
-            JOptionPane.showMessageDialog(null, pilaA.peek1());
-            //JOptionPane.showMessageDialog(null, pilaA2.peek());
+            //JOptionPane.showMessageDialog(null, pilaA.peek1());
+            JOptionPane.showMessageDialog(null, pilaA2.peek());
         } else if (getTipo() == 2) {
             JOptionPane.showMessageDialog(null, pila.peek());
         }
@@ -327,9 +346,9 @@ public class FrmPyC extends javax.swing.JFrame {
         String texto = txtLista.getText();
 
         if (getTipo() == 1) {
-            JOptionPane.showMessageDialog(null, pilaA.peek1());
-            pilaA.pop();
-            int size = pilaA.size();
+            JOptionPane.showMessageDialog(null, pilaA2.peek());
+            pilaA2.pop();
+            int size = pilaA2.size();
             model.remove(size);
             jList1.setModel(model);
         } else if (getTipo() == 2) {
@@ -375,15 +394,15 @@ public class FrmPyC extends javax.swing.JFrame {
         String txtA = txtCArreglo.getText();
 
         if (!arreglo && lista) {
-            if (colaA.isLimite()) {
+            colaA.push(txtA);
+            if (!colaA.isLimite()) {
+                JOptionPane.showMessageDialog(null, "Excedio el limite de la cola");
+            } else {
                 model.addElement(txtA);
                 jList6.setModel(model);
                 txtCArreglo.setText("");
-                colaA.push(txtA);
                 txtCArreglo.requestFocus();
                 setTipo(1);
-            }else{
-                JOptionPane.showMessageDialog(null, "Excedio el limite de la cola");
             }
         } else if (arreglo && !lista) {
             model.addElement(texto);
@@ -396,6 +415,60 @@ public class FrmPyC extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Ingrese dato para agregar");
         }
     }//GEN-LAST:event_btnCAgregarActionPerformed
+
+    private void chkPLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkPLActionPerformed
+
+        if (chkPL.isSelected()) {
+            //JOptionPane.showMessageDialog(null, chkPL.getActionCommand() + " is checked");
+            txtArreglo.setEnabled(false);
+        } else {
+            //JOptionPane.showMessageDialog(null, chkPL.getActionCommand() + " is unchecked");
+            txtArreglo.setEnabled(true);
+        }
+
+    }//GEN-LAST:event_chkPLActionPerformed
+
+    private void chkPArrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkPArrActionPerformed
+        String n = JOptionPane.showInputDialog(null, "Ingrese el tamaño que desea para la cola:",
+                "Tamaño de la cola", JOptionPane.QUESTION_MESSAGE);
+
+        pilaA2 = new PilaArreglo2(Integer.parseInt(n));
+        txtArreglo.requestFocus();
+
+        if (chkPArr.isSelected()) {
+            //JOptionPane.showMessageDialog(null, chkPL.getActionCommand() + " is checked");
+            txtLista.setEnabled(false);
+        } else {
+            //JOptionPane.showMessageDialog(null, chkPL.getActionCommand() + " is unchecked");
+            txtLista.setEnabled(true);
+        }
+    }//GEN-LAST:event_chkPArrActionPerformed
+
+    private void chkCArrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkCArrActionPerformed
+        String n = JOptionPane.showInputDialog(null, "Ingrese el tamaño que desea para la cola:",
+                "Tamaño de la cola", JOptionPane.QUESTION_MESSAGE);
+        colaA = new ColaArreglo(Integer.parseInt(n));
+        txtCArreglo.requestFocus();
+
+        if (chkCArr.isSelected()) {
+            //JOptionPane.showMessageDialog(null, chkPL.getActionCommand() + " is checked");
+            txtCLista.setEnabled(false);
+            txtCArreglo.requestFocus();
+        } else {
+            //JOptionPane.showMessageDialog(null, chkPL.getActionCommand() + " is unchecked");
+            txtCLista.setEnabled(true);
+        }
+    }//GEN-LAST:event_chkCArrActionPerformed
+
+    private void chkCLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkCLActionPerformed
+        if (chkCL.isSelected()) {
+            //JOptionPane.showMessageDialog(null, chkPL.getActionCommand() + " is checked");
+            txtCArreglo.setEnabled(false);
+        } else {
+            //JOptionPane.showMessageDialog(null, chkPL.getActionCommand() + " is unchecked");
+            txtCArreglo.setEnabled(true);
+        }
+    }//GEN-LAST:event_chkCLActionPerformed
 
     public boolean vacio(JTextField texto) {
         boolean v;
@@ -452,65 +525,25 @@ public class FrmPyC extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregar;
-    private javax.swing.JButton btnAgregar1;
-    private javax.swing.JButton btnAgregar2;
-    private javax.swing.JButton btnAgregar3;
-    private javax.swing.JButton btnAgregar4;
     private javax.swing.JButton btnCAgregar;
     private javax.swing.JButton btnCExtraer;
     private javax.swing.JButton btnCMostrar;
     private javax.swing.JButton btnExtraer;
-    private javax.swing.JButton btnExtraer1;
-    private javax.swing.JButton btnExtraer2;
-    private javax.swing.JButton btnExtraer3;
-    private javax.swing.JButton btnExtraer4;
     private javax.swing.JButton btnMostrar;
-    private javax.swing.JButton btnMostrar1;
-    private javax.swing.JButton btnMostrar2;
-    private javax.swing.JButton btnMostrar3;
-    private javax.swing.JButton btnMostrar4;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
+    private javax.swing.JCheckBox chkCArr;
+    private javax.swing.JCheckBox chkCL;
+    private javax.swing.JCheckBox chkPArr;
+    private javax.swing.JCheckBox chkPL;
     private javax.swing.JList<String> jList1;
-    private javax.swing.JList<String> jList2;
-    private javax.swing.JList<String> jList3;
-    private javax.swing.JList<String> jList4;
-    private javax.swing.JList<String> jList5;
     private javax.swing.JList<String> jList6;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JScrollPane jScrollPane5;
-    private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JPanel panelCola;
     private javax.swing.JPanel panelPila;
-    private javax.swing.JPanel panelPila1;
-    private javax.swing.JPanel panelPila2;
-    private javax.swing.JPanel panelPila3;
-    private javax.swing.JPanel panelPila4;
     private javax.swing.JPanel panelPrincipal;
     private javax.swing.JTextField txtArreglo;
-    private javax.swing.JTextField txtArreglo1;
-    private javax.swing.JTextField txtArreglo2;
-    private javax.swing.JTextField txtArreglo3;
-    private javax.swing.JTextField txtArreglo4;
     private javax.swing.JTextField txtCArreglo;
     private javax.swing.JTextField txtCLista;
     private javax.swing.JTextField txtLista;
-    private javax.swing.JTextField txtLista1;
-    private javax.swing.JTextField txtLista2;
-    private javax.swing.JTextField txtLista3;
-    private javax.swing.JTextField txtLista4;
     // End of variables declaration//GEN-END:variables
 }
